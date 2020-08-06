@@ -8,8 +8,8 @@ if __name__ == "__main__":
     setuptools.setup(
         name="drawbank",
         version=open(os.path.join(os.path.dirname(__file__), "VERSION")).read().rstrip(),
-        # url="https://github.com/axbazin/synta",
-        description="Draws the current number of available genomes in GenBank",
+        url="https://github.com/axbazin/drawbank",
+        description="Draws the number of available genomes in GenBank or RefSeq through time",
         packages=setuptools.find_packages(),
         classifiers=["Environment :: Console",
                 "Intended Audience :: Science/Research",
