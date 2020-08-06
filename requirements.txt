@@ -1,0 +1,2 @@
+python>=3.6
+plotly>=4.0
