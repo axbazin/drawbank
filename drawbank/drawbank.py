@@ -12,12 +12,12 @@ import pkg_resources
 import logging
 import requests
 import datetime
-from dateutil.parser import parse as parsedate
 
 #installed library
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
+from dateutil.parser import parse as parsedate
 from appdirs import user_cache_dir
 from ete3 import NCBITaxa
 
@@ -81,6 +81,7 @@ def make_df(years, most_numerous, cumulative=True):
     return pd.DataFrame.from_dict(d)
 
 def make_urls(section, taxons):
+    """ builds the url from which to download the assembly summary files depending on given options"""
     uri = 'https://ftp.ncbi.nih.gov/genomes'
     urls = set()
     CACHE_DIR = user_cache_dir(appname="drawbank", appauthor="axbazin")
@@ -93,6 +94,7 @@ def make_urls(section, taxons):
     return urls
 
 def get_summaries(section, taxons, no_cache):
+    """ defines and eventually gets the assembly summary files"""
     summaries = set()
     for url, dest_file in make_urls(section, taxons):
         r = requests.head(url)
@@ -117,6 +119,7 @@ def get_summaries(section, taxons, no_cache):
     return summaries
 
 def get_taxonomic_groups(groups):
+    """ checks input taxonomic group validity"""
     taxons = groups.split(",")
     for tax in taxons:
         if tax not in TAXONOMIC_GROUPS:
@@ -179,8 +182,6 @@ def main():
     fig.show()
 
     logging.getLogger().info("Drawing is done. Figure should be opened in your system's default browser.")
-
-
 
 if __name__ == "__main__":
     main()

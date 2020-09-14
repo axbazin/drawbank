@@ -2,3 +2,6 @@ python>=3.6
 plotly>=4.0
 appdirs
 requests
+ete3>=3.0
+python-dateutil
+pandas
