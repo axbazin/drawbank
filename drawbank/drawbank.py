@@ -19,7 +19,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 from appdirs import user_cache_dir
-
+from ete3 import NCBITaxa
 
 TAXONOMIC_GROUPS = ["all","archaea","bacteria","fungi","invertebrate","metagenomes","plant","protozoa","vertebrate_mammalian","viral","vertebrate_other","other"]
 
@@ -33,7 +33,7 @@ def get_most_numerous(all_spe, m):
     group = [ data[0] for data in d.most_common(m)]
     num_spe = {}
     for spe in group:
-        num_spe[spe] = all_spe[spe]
+        num_spe[NCBITaxa().get_taxid_translator([int(spe)])[int(spe)]] = all_spe[spe]
     return num_spe
 
 def parse_assembly(fnames):
@@ -54,7 +54,7 @@ def parse_assembly(fnames):
                         nb_no_date+=1
                     else:
                         curr_y = int(linedata[14].split('/')[0])
-                        n_spe[linedata[7]][curr_y] +=1#should use group taxid instead (+ ete3)
+                        n_spe[linedata[6]][curr_y] +=1
                         years[curr_y]+=1
     if nb_no_date > 0:
         logging.getLogger().warning(f"{nb_no_date} genomes had no date of submission in your assembly summary.")
