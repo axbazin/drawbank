@@ -144,10 +144,6 @@ def cmdline():
     misc.add_argument("--verbose", required=False, action="store_true", default=False, help="show the DEBUG log")
     misc.add_argument('--version', action='version', version='%(prog)s ' + pkg_resources.get_distribution("drawbank").version)
 
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(1)
-
     return parser.parse_args()
 
 def main():
