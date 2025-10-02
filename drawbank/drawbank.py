@@ -67,7 +67,7 @@ def parse_assembly(fnames):
                     if linedata[14] == "":
                         nb_no_date += 1
                     else:
-                        curr_y = int(linedata[14].split("/")[0])
+                        curr_y = int(linedata[14].split("-")[0])
                         n_spe[linedata[6]][curr_y] += 1
                         years[curr_y] += 1
     if nb_no_date > 0:
