@@ -8,13 +8,12 @@ import argparse
 import sys
 import os
 from collections import Counter, defaultdict
-import pkg_resources
+from importlib.metadata import distribution
 import logging
 import requests
 import datetime
 
 # installed library
-import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 from dateutil.parser import parse as parsedate
@@ -231,7 +230,7 @@ def cmdline():
     misc.add_argument(
         "--version",
         action="version",
-        version="%(prog)s " + pkg_resources.get_distribution("drawbank").version,
+        version="%(prog)s " + distribution("drawbank").version,
     )
 
     return parser.parse_args()
@@ -251,9 +250,7 @@ def main():
         datefmt="%Y-%m-%d %H:%M:%S",
     )
     logging.getLogger().info("Command: " + " ".join([arg for arg in sys.argv]))
-    logging.getLogger().info(
-        "drawbank version: " + pkg_resources.get_distribution("drawbank").version
-    )
+    logging.getLogger().info("drawbank version: " + distribution("drawbank").version)
 
     summaries = set()
     if args.assembly is None:
