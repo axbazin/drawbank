@@ -19,7 +19,7 @@ This will install dependencies and the command line tool.
 
 `drawbank` can be called with or without options. It will download the latest assembly summary, or use the one provided through the command line. By default it will display the number of genomes added each year. 
 
-![Genbank genome count](https://github.com/axbazin/drawbank/raw/master/img/Genbank_genomes_noncumulative_012521.png)
+![Genbank genome count](https://github.com/axbazin/drawbank/raw/main/img/Genbank_genomes_noncumulative_012521.png)
 
 
 To see the more usual 'cumulative count of genomes added each year", you can do it as such:
@@ -28,13 +28,13 @@ To see the more usual 'cumulative count of genomes added each year", you can do 
 
  draw something akin to this (it was drawn in early 2021 which is why 2020 and 2021 look alike), and display it in your browser.
 
-![Cumulative genbank genome counts](https://github.com/axbazin/drawbank/raw/master/img/GenBank_genome_count_012521.png)
+![Cumulative genbank genome counts](https://github.com/axbazin/drawbank/raw/main/img/GenBank_genome_count_012521.png)
 
 You can filter down to any group of interest, for example looking only at plants:
 
 `drawbank -c -g plants`
 
-![Cumulative genbank plant genome count](https://github.com/axbazin/drawbank/raw/master/img/GenBank_plants_count_012521.png)
+![Cumulative genbank plant genome count](https://github.com/axbazin/drawbank/raw/main/img/GenBank_plants_count_012521.png)
 
 # Command line options
 
@@ -75,9 +75,6 @@ They are all listed in the requirements.txt file.
 - plotly>=4.0
 - appdirs
 - requests
-- ete3>=3.0
+- ete4>=4.0
 - python-dateutil
 - pandas
-
-
-
